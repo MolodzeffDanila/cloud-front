@@ -20,7 +20,9 @@ jobs:
         - name: build image
           id: build-docker-image
           run: 
-            docker build . -f Dockerfile -t cloud-front:latest
+            docker build . -f Dockerfile -t cloud-front
         - name: push the docker image
+          env: # Or as an environment variable
+            USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/cloud-front:latest
+          run: docker push $env:USERNAME/cloud-front
