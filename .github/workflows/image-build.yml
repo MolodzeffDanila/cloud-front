@@ -25,4 +25,4 @@ jobs:
           env: # Or as an environment variable
             USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           id: push-docker-image
-          run: docker push $env:USERNAME/cloud-front
+          run: docker push "$env:USERNAME/cloud-front"
